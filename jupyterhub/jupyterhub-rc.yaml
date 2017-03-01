@@ -15,7 +15,7 @@ spec:
         app: jupyterhub
     spec:
       imagePullSecrets:
-        - name: sidregistrykey
+        - name: {REGISTRYSECRET}
       containers:
         - name: jupyterhub-proxy
           image: jupyterhub/configurable-http-proxy
@@ -35,7 +35,7 @@ spec:
             - --error-target
             - http://127.0.0.1:8081/hub/error
         - name: jupyterhub
-          image: docker-registry.atos.local:5000/jupyterhub:latest
+          image: {LOCAL_DOCKER_REGISTRY}/jupyterhub:latest
           ports:
             - containerPort: 8081
               name: jhubport
@@ -52,7 +52,7 @@ spec:
       volumes:
         - name: token
           secret:
-            secretName: "default-token-brjs3"
+            secretName: "{K8S_API_SECRETNAME}"
         - name: jupyterhub-db
           hostPath:
             path: "/data/jupyterhub/db"
