@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvjupyterhub
+  labels:
+    component: JupyterHubPV
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "glusterfs"
+spec:
+  #selector:
+  #  component: JupyterHubPV
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  glusterfs:
+    endpoints: glusterfs
+    path: brick1
+    readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jupyternotebookclaim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "glusterfs"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 200Mi
+  #selector:
+  #  matchLabels:
+  #    component: JupyterHubPV
