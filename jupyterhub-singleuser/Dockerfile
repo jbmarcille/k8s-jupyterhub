@@ -29,10 +29,7 @@ RUN echo "Acquire::http::Proxy \"https://192.168.200.2:3128/\";" >>/etc/apt/apt.
   'h5py' \
   'hdf5' \
   'ipywidgets' \
-<<<<<<< HEAD:jupyterhub-singleuser/Dockerfile
-=======
   'jupyter' \
->>>>>>> 1f49e5948f325f7c5c36f9b52f15b0c1c3a53d29:Dockerfile
   'jupyterhub' \
   'lxml' \
   'matplotlib' \
