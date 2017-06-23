@@ -12,7 +12,7 @@ then
 fi
 
 cd ${NOTEBOOK_DIR}
-exec jupyterhub-singleuser \
+. /usr/local/bin/start.sh jupyterhub-singleuser \
   --port=8888 \
   --ip=0.0.0.0 \
   --user=$JPY_USER \
