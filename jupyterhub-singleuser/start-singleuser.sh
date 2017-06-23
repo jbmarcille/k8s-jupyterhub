@@ -11,6 +11,7 @@ then
     mkdir -p ${NOTEBOOK_DIR}
 fi
 
+cd ${NOTEBOOK_DIR}
 exec jupyterhub-singleuser \
   --port=8888 \
   --ip=0.0.0.0 \
