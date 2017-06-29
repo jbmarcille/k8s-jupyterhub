@@ -8,7 +8,7 @@ notebook_arg=""
 if [ -n "${NOTEBOOK_DIR:+x}" ]
 then
     notebook_arg="--notebook-dir=${NOTEBOOK_DIR}"
-    mkdir -p ${NOTEBOOK_DIR}
+    mkdir -p ${NOTEBOOK_DIR} && chown -R $NB_USER:users ${NOTEBOOK_DIR}
     cd ${NOTEBOOK_DIR}
 fi
 
